@@ -1,4 +1,4 @@
-import { HasPhoneNumber, HasEmail } from "./1-basics";
+import { IHasPhoneNumber, IHasEmail } from './1-basics'
 
 // == CLASSES == //
 
@@ -7,7 +7,7 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
  * -   They can "implement" interfaces
  */
 
-// export class Contact implements HasEmail {
+// export class Contact implementsIHasEmail {
 //   email: string;
 //   name: string;
 //   constructor(name: string, email: string) {
@@ -29,7 +29,7 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
  * - private - only me
  */
 
-// class ParamPropContact implements HasEmail {
+// class ParamPropContact implementsIHasEmail {
 //   constructor(public name: string, public email: string = "no email") {
 //     // nothing needed
 //   }
@@ -38,7 +38,7 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
 /**
  * (4) Class fields can have initializers (defaults)
  */
-// class OtherContact implements HasEmail, HasPhoneNumber {
+// class OtherContact implementsIHasEmail, IHasPhoneNumber {
 //   protected age: number = 0;
 //   // private password: string;
 //   constructor(public name: string, public email: string, public phone: number) {
@@ -51,12 +51,12 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
  * (5) TypeScript even allows for abstract classes, which have a partial implementation
  */
 
-// abstract class AbstractContact implements HasEmail, HasPhoneNumber {
+// abstract class AbstractContact implementsIHasEmail, IHasPhoneNumber {
 //   public abstract phone: number; // must be implemented by non-abstract subclasses
 
 //   constructor(
 //     public name: string,
-//     public email: string // must be public to satisfy HasEmail
+//     public email: string // must be public to satisfyIHasEmail
 //   ) {}
 
 //   abstract sendEmail(): void; // must be implemented by non-abstract subclasses

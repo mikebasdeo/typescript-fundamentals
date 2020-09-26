@@ -8,7 +8,6 @@
     "eslint.enable": true,
     "eslint.validate": ["javascript", "typescript"],
     "eslint.packageManager": "yarn",
-    "eslint.autoFixOnSave": true,
     "typescript.tsdk": "node_modules/typescript/lib",
     "files.exclude": {
       "**/.git": true,
@@ -68,6 +67,9 @@
     "code-runner.executorMap": {
       "javascript": "node",
       "typescript": "node_modules/.bin/ts-node"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
     }
   },
   "extensions": {

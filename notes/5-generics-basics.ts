@@ -1,4 +1,4 @@
-import { HasEmail } from "./1-basics";
+import { IHasEmail } from "./1-basics";
 
 /**
  * (1) Generics allow us to parameterize types in the same way that

@@ -1,51 +1,51 @@
-import { HasPhoneNumber, HasEmail } from "./1-basics";
+import { IHasPhoneNumber, IHasEmail } from './1-basics'
 
 //== TYPE ALIAS ==//
 /**
  * (1) Type aliases allow us to give a type a name
  */
-// type StringOrNumber = string | number;
+type StringOrNumber = string | number
 
 // // this is the ONLY time you'll see a type on the RHS of assignment
-// type HasName = { name: string };
+type HasName = { name: string }
 
 // NEW in TS 3.7: Self-referencing types!
-type NumVal = 1 | 2 | 3 | NumVal[];
+type NumVal = 1 | 2 | 3 | NumVal[]
 
 // == INTERFACE == //
 /**
  * (2) Interfaces can extend from other interfaces
  */
 
-// export interface HasInternationalPhoneNumber extends HasPhoneNumber {
-//   countryCode: string;
-// }
+export interface HasInternationalPhoneNumber extends IHasPhoneNumber {
+  countryCode: string
+}
 
 /**
- * (3) they can also be used to describe call signatures
+ * (3) they can also be used to describe functions call signatures
  */
 
-// interface ContactMessenger1 {
-//   (contact: HasEmail | HasPhoneNumber, message: string): void;
-// }
+interface ContactMessenger1 {
+  (contact: IHasEmail | IHasPhoneNumber, message: string): void
+}
 
-// type ContactMessenger2 = (
-//   contact: HasEmail | HasPhoneNumber,
-//   message: string
-// ) => void;
+type ContactMessenger2 = (
+  contact:IHasEmail | IHasPhoneNumber,
+  message: string
+) => void;
 
 // // NOTE: we don't need type annotations for contact or message
-// const emailer: ContactMessenger1 = (_contact, _message) => {
-//   /** ... */
-// };
+const emailer: ContactMessenger1 = (_contact, _message) => {
+  /** ... */
+};
 
 /**
  * (4) construct signatures can be described as well
  */
 
-// interface ContactConstructor {
-//   new (...args: any[]): HasEmail | HasPhoneNumber;
-// }
+interface ContactConstructor {
+  new (...args: any[]):IHasEmail | IHasPhoneNumber;
+}
 
 /**
  * (5) index signatures describe how a type will respond to property access
@@ -59,15 +59,15 @@ type NumVal = 1 | 2 | 3 | NumVal[];
  * }
  */
 
-// interface PhoneNumberDict {
-//   // arr[0],  foo['myProp']
-//   [numberName: string]:
-//     | undefined
-//     | {
-//         areaCode: number;
-//         num: number;
-//       };
-// }
+interface PhoneNumberDict {
+  // arr[0],  foo['myProp']
+  [numberName: string]:
+    | undefined
+    | {
+        areaCode: number;
+        num: number;
+      };
+}
 
 // const phoneDict: PhoneNumberDict = {
 //   office: { areaCode: 321, num: 5551212 },
@@ -125,4 +125,4 @@ type NumVal = 1 | 2 | 3 | NumVal[];
 
 // const x: StringVal = Math.random() > 0.5 ? "b" : ["a"]; // ✅ ok!
 
-export default {};
+export default {}

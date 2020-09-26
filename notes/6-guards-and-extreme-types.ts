@@ -1,4 +1,4 @@
-import { HasEmail } from "./1-basics";
+import { IHasEmail } from './1-basics'
 
 //== TOP TYPES ==//
 
@@ -52,12 +52,12 @@ import { HasEmail } from "./1-basics";
  */
 
 // // 💡 Note return type
-// function isHasEmail(x: any): x is HasEmail {
+// function isHasEmail(x: any): x isIHasEmail {
 //   return typeof x.name === "string" && typeof x.email === "string";
 // }
 
 // if (isHasEmail(myUnknown)) {
-//   // In here, myUnknown is of type HasEmail
+//   // In here, myUnknown is of typeIHasEmail
 //   console.log(myUnknown.name, myUnknown.email);
 // }
 
