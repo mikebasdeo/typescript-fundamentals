@@ -5,7 +5,7 @@ import { IHasPhoneNumber, IHasEmail } from './1-basics'
  * (1) Type aliases allow us to give a type a name
  */
 type StringOrNumber = string | number
-
+ 
 // // this is the ONLY time you'll see a type on the RHS of assignment
 type HasName = { name: string }
 
