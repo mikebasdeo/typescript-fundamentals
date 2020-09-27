@@ -1,4 +1,4 @@
-import { IHasEmail } from "./1-basics";
+import { IHasEmail } from './1-basics'
 
 /**
  * (1) Generics allow us to parameterize types in the same way that
@@ -6,19 +6,19 @@ import { IHasEmail } from "./1-basics";
  */
 
 // // param determines the value of x
-// function wrappedValue(x: any) {
-//   return {
-//     value: x
-//   };
-// }
+function wrappedValue(x: any) {
+  return {
+    value: x,
+  }
+}
 
 // // type param determines the type of x
-// interface WrappedValue<X> {
-//   value: X;
-// }
+interface WrappedValue<X> {
+  value: X
+}
 
-// let val: WrappedValue<string[]> = { value: [] };
-// val.value;
+let val: WrappedValue<string[]> = { value: [] }
+val.value
 
 /**
  * we can name these params whatever we want, but a common convention
@@ -31,16 +31,18 @@ import { IHasEmail } from "./1-basics";
  */
 
 // // for Array.prototype.filter
-// interface FilterFunction<T = any> {
-//   (val: T): boolean;
-// }
+interface FilterFunction<T = any> {
+  (val: T): boolean
+}
 
-// const stringFilter: FilterFunction<string> = val => typeof val === "string";
+const stringFilter: FilterFunction<string> = (val) => typeof val === 'string'
 // stringFilter(0); // 🚨 ERROR
-// stringFilter("abc"); // ✅ OK
+const solution = stringFilter('test') // ✅ OK
+
+console.log(solution)
 
 // // can be used with any value
-// const truthyFilter: FilterFunction = val => val;
+const truthyFilter: FilterFunction = val => val;
 // truthyFilter(0); // false
 // truthyFilter(1); // true
 // truthyFilter(""); // false

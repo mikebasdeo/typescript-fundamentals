@@ -1,21 +1,40 @@
-export class AddressBook {
-  contacts = []
+type Address = {
+  street?: string
+  city?: string
+  state?: string
+  postalCode?: number
+  country?: string
+  houseNumber?: number
+}
 
-  addContact(contact) {
+type Contact = {
+  firstName?: string
+  middleName?: string
+  lastName?: string
+  email?: string
+  phones: { [id: string]: string }
+  addresses: { [addrName: string]: Address }
+  salutation?: string
+}
+
+export class AddressBook {
+  contacts: Contact[] = []
+
+  addContact(contact: Contact) {
     this.contacts.push(contact)
   }
 
-  findContactByName(filter) {
+  findContactByName(inputContact: Contact) {
     return this.contacts.filter((c) => {
       if (
-        typeof filter.firstName !== 'undefined' &&
-        c.firstName !== filter.firstName
+        typeof inputContact.firstName !== 'undefined' &&
+        c.firstName !== inputContact.firstName
       ) {
         return false
       }
       if (
-        typeof filter.lastName !== 'undefined' &&
-        c.lastName !== filter.lastName
+        typeof inputContact.lastName !== 'undefined' &&
+        c.lastName !== inputContact.lastName
       ) {
         return false
       }
@@ -24,17 +43,17 @@ export class AddressBook {
   }
 }
 
-export function formatDate(date) {
+export function formatDate(date: Date) {
   return date.toISOString().replace(/[-:]+/g, '').split('.')[0] + 'Z'
 }
 
-function getFullName(contact) {
+function getFullName(contact: Contact) {
   return [contact.firstName, contact.middleName, contact.lastName]
     .filter(Boolean)
     .join(' ')
 }
 
-export function getVcardText(contact, date = new Date()) {
+export function getVcardText(contact: Contact, date = new Date()) {
   const parts = [
     'BEGIN:VCARD',
     'VERSION:2.1',
