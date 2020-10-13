@@ -17,20 +17,23 @@ const program = ts.createProgram({
 });
 
 // // (2) Get the non-declaration (.d.ts) source files (.ts)
-// const nonDeclFiles = program
-//   .getSourceFiles()
-//   .filter(sf => !sf.isDeclarationFile);
+const nonDeclFiles = program
+  .getSourceFiles()
+  .filter(sf => !sf.isDeclarationFile);
+
+
+console.log(nonDeclFiles.map(f => f.fileName))
 
 // // (3) get the type-checker
-// const checker = program.getTypeChecker();
+const checker = program.getTypeChecker();
 
-// /**
-//  * (4) use the type checker to obtain the
-//  * -   appropriate ts.Symbol for each SourceFile
-//  */
-// const sfSymbols = nonDeclFiles
-//   .map(f => checker.getSymbolAtLocation(f))
-//   .filter(isDefined); // here's the type guard to filter out undefined
+/**
+ * (4) use the type checker to obtain the
+ * -   appropriate ts.Symbol for each SourceFile
+ */
+const sfSymbols = nonDeclFiles
+  .map(f => checker.getSymbolAtLocation(f))
+  .filter(isDefined); // here's the type guard to filter out undefined
 
 // // (5) for each SourceFile Symbol
 // sfSymbols.forEach(sfSymbol => {

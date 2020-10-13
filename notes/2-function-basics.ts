@@ -9,7 +9,6 @@ function sendEmail(to: IHasEmail): { recipient: string; body: string } {
     body: "You're pre-qualified for a loan!",
   }
 }
-
 // (2) or the arrow-function variant
 const sendTextMessage = (
   to: IHasPhoneNumber
